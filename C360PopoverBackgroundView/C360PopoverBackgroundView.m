@@ -49,7 +49,7 @@
 
 + (UIEdgeInsets)contentViewInsets
 {
-    return UIEdgeInsetsMake(8, 8, 8, 8);
+    return UIEdgeInsetsZero;
 }
 
 - (id)initWithFrame:(CGRect)frame
@@ -176,6 +176,30 @@
 - (void)setGlowColor:(UIColor *)glowColor
 {
     _glowColor = glowColor;
+    [self setNeedsImageUpdate];
+}
+
+- (void)setShadowColor:(UIColor *)shadowColor
+{
+    _shadowColor = shadowColor;
+    [self setNeedsImageUpdate];
+}
+
+- (void)setShadowRadius:(NSNumber *)shadowRadius
+{
+    _shadowRadius = shadowRadius;
+    [self setNeedsImageUpdate];
+}
+
+- (void)setShadowOpacity:(NSNumber *)shadowOpacity
+{
+    _shadowOpacity = shadowOpacity;
+    [self setNeedsImageUpdate];
+}
+
+- (void)setShadowOffset:(NSNumber *)shadowOffset
+{
+    _shadowOffset = shadowOffset;
     [self setNeedsImageUpdate];
 }
 
@@ -968,6 +992,15 @@
         
     }];
     
+    if (self.shadowColor) {
+        self.fillView.layer.shadowColor = [self.shadowColor CGColor];
+        self.fillView.layer.shadowOffset = [self.shadowOffset CGSizeValue];
+        self.fillView.layer.shadowRadius = [self.shadowRadius floatValue];
+        self.fillView.layer.shadowOpacity = [self.shadowOpacity floatValue];
+    } else {
+        self.fillView.layer.shadowColor = nil;
+        self.fillView.layer.opacity = 0.f;
+    }
 }
 
 - (UIImage *)drawImageWithWidth:(CGFloat)width height:(CGFloat)height block:(void(^)(CGContextRef context))block

@@ -15,5 +15,9 @@
 @property (nonatomic, strong) UIColor *tintColor UI_APPEARANCE_SELECTOR;
 @property (nonatomic, strong) UIColor *borderColor UI_APPEARANCE_SELECTOR;
 @property (nonatomic, strong) UIColor *glowColor UI_APPEARANCE_SELECTOR;
+@property (nonatomic, strong) UIColor *shadowColor UI_APPEARANCE_SELECTOR;
+@property (nonatomic, strong) NSNumber *shadowRadius UI_APPEARANCE_SELECTOR;
+@property (nonatomic, strong) NSNumber *shadowOpacity UI_APPEARANCE_SELECTOR;
+@property (nonatomic, strong) NSValue *shadowOffset UI_APPEARANCE_SELECTOR;
 
 @end
